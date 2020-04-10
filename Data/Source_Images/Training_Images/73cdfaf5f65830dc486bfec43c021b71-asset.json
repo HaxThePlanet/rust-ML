@@ -1,0 +1,48 @@
+{
+    "asset": {
+        "id": "73cdfaf5f65830dc486bfec43c021b71",
+        "format": "png",
+        "state": 2,
+        "type": 1,
+        "name": "angle.png",
+        "path": "https://ruststorage.blob.core.windows.net/rustpictures/angle.png?sv=2019-02-02&ss=b&srt=sco&sp=rwdlac&se=2020-04-26T03:01:20Z&st=2020-04-09T19:01:20Z&spr=https&sig=pEV2Co%2FnWpUnCE6aCXvAPHb%2FeW82DV%2FYywL48bzmbVU%3D",
+        "size": {
+            "width": 600,
+            "height": 338
+        }
+    },
+    "regions": [
+        {
+            "id": "KZxZmsH9V",
+            "type": "POLYGON",
+            "tags": [
+                "metaldoor"
+            ],
+            "boundingBox": {
+                "height": 75.29498164014687,
+                "width": 19.862068965517242,
+                "left": 362.0689655172414,
+                "top": 142.90403151774785
+            },
+            "points": [
+                {
+                    "x": 362.8965517241379,
+                    "y": 142.90403151774785
+                },
+                {
+                    "x": 362.0689655172414,
+                    "y": 218.19901315789474
+                },
+                {
+                    "x": 381.51724137931035,
+                    "y": 209.09742197062423
+                },
+                {
+                    "x": 381.9310344827586,
+                    "y": 147.4548271113831
+                }
+            ]
+        }
+    ],
+    "version": "2.1.0"
+}

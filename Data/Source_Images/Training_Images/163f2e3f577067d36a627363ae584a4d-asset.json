@@ -1,0 +1,52 @@
+{
+    "asset": {
+        "id": "163f2e3f577067d36a627363ae584a4d",
+        "format": "png",
+        "state": 2,
+        "type": 1,
+        "name": "door8.png",
+        "path": "https://ruststorage.blob.core.windows.net/rustpictures/door8.png?sv=2019-02-02&ss=b&srt=sco&sp=rwdlac&se=2020-04-26T03:01:20Z&st=2020-04-09T19:01:20Z&spr=https&sig=pEV2Co%2FnWpUnCE6aCXvAPHb%2FeW82DV%2FYywL48bzmbVU%3D",
+        "size": {
+            "width": 3840,
+            "height": 2160
+        }
+    },
+    "regions": [
+        {
+            "id": "fTlr8OGUf",
+            "type": "POLYGON",
+            "tags": [
+                "metaldoor"
+            ],
+            "boundingBox": {
+                "height": 72.46845425867508,
+                "width": 49.95860437610881,
+                "left": 1804.186871673566,
+                "top": 1208.5410094637225
+            },
+            "points": [
+                {
+                    "x": 1804.186871673566,
+                    "y": 1278.9511041009464
+                },
+                {
+                    "x": 1804.186871673566,
+                    "y": 1208.5410094637225
+                },
+                {
+                    "x": 1854.1454760496747,
+                    "y": 1210.5993690851735
+                },
+                {
+                    "x": 1851.8746303962153,
+                    "y": 1276.679810725552
+                },
+                {
+                    "x": 1831.4370195150798,
+                    "y": 1281.0094637223974
+                }
+            ]
+        }
+    ],
+    "version": "2.1.0"
+}

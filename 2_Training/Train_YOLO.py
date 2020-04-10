@@ -71,7 +71,11 @@ weights_path = os.path.join(keras_path, "yolo.h5")
 
 FLAGS = None
 
+import tensorflow as tf
+
 if __name__ == "__main__":
+    print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
     # Delete all default flags
     parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)
     """

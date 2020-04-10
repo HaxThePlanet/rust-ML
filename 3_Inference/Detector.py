@@ -28,6 +28,13 @@ import pandas as pd
 import numpy as np
 from Get_File_Paths import GetFileList
 import random
+import time
+
+import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
+config = tf.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.3
+set_session(tf.Session(config=config))
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
@@ -175,25 +182,9 @@ if __name__ == "__main__":
             "anchors_path": FLAGS.anchors_path,
             "classes_path": FLAGS.classes_path,
             "score": FLAGS.score,
-            "gpu_num": FLAGS.gpu_num,
+            "gpu_num": 0,
             "model_image_size": (416, 416),
         }
-    )
-
-    # Make a dataframe for the prediction outputs
-    out_df = pd.DataFrame(
-        columns=[
-            "image",
-            "image_path",
-            "xmin",
-            "ymin",
-            "xmax",
-            "ymax",
-            "label",
-            "confidence",
-            "x_size",
-            "y_size",
-        ]
     )
 
     # labels to draw on images
@@ -201,61 +192,113 @@ if __name__ == "__main__":
     input_labels = [line.rstrip("\n") for line in class_file.readlines()]
     print("Found {} input labels: {} ...".format(len(input_labels), input_labels))
 
-    if input_image_paths:
-        print(
-            "Found {} input images: {} ...".format(
-                len(input_image_paths),
-                [os.path.basename(f) for f in input_image_paths[:5]],
-            )
-        )
-        start = timer()
-        text_out = ""
+    if os.path.exists("C:\\Users\\bob\\Documents\\TrainYourOwnYOLO\\Data\\Source_Images\\Test_Image_Detection_Results\\Detection_Results.csv"):
+        os.remove("C:\\Users\\bob\\Documents\\TrainYourOwnYOLO\\Data\\Source_Images\\Test_Image_Detection_Results\\Detection_Results.csv")
 
-        # This is for images
-        for i, img_path in enumerate(input_image_paths):
-            print(img_path)
-            prediction, image = detect_object(
-                yolo,
-                img_path,
-                save_img=save_img,
-                save_img_path=FLAGS.output,
-                postfix=FLAGS.postfix,
+    while True:
+        try:
+            # Make a dataframe for the prediction outputs
+            out_df = pd.DataFrame(
+                columns=[
+                    "image",
+                    "image_path",
+                    "xmin",
+                    "ymin",
+                    "xmax",
+                    "ymax",
+                    "label",
+                    "confidence",
+                    "x_size",
+                    "y_size",
+                ]
             )
-            y_size, x_size, _ = np.array(image).shape
-            for single_prediction in prediction:
-                out_df = out_df.append(
-                    pd.DataFrame(
-                        [
-                            [
-                                os.path.basename(img_path.rstrip("\n")),
-                                img_path.rstrip("\n"),
-                            ]
-                            + single_prediction
-                            + [x_size, y_size]
-                        ],
-                        columns=[
-                            "image",
-                            "image_path",
-                            "xmin",
-                            "ymin",
-                            "xmax",
-                            "ymax",
-                            "label",
-                            "confidence",
-                            "x_size",
-                            "y_size",
-                        ],
+
+            if file_types:
+                input_paths = GetFileList(FLAGS.input_path, endings=file_types)
+            else:
+                input_paths = GetFileList(FLAGS.input_path)
+
+            input_image_paths = []
+            input_video_paths = []
+
+            for item in input_paths:
+                if item.endswith(img_endings):
+                    input_image_paths.append(item)
+                elif item.endswith(vid_endings):
+                    input_video_paths.append(item)
+
+            output_path = FLAGS.output
+
+            if not os.path.exists(output_path):
+                os.makedirs(output_path)
+
+            if input_image_paths:
+                print(
+                    "Found {} input images: {} ...".format(
+                        len(input_image_paths),
+                        [os.path.basename(f) for f in input_image_paths[:5]],
                     )
                 )
-        end = timer()
-        print(
-            "Processed {} images in {:.1f}sec - {:.1f}FPS".format(
-                len(input_image_paths),
-                end - start,
-                len(input_image_paths) / (end - start),
-            )
-        )
-        out_df.to_csv(FLAGS.box, index=False)
+
+                if os.path.exists("C:\\Users\\bob\\Documents\\TrainYourOwnYOLO\\Data\\Source_Images\\Test_Image_Detection_Results\\Detection_Results.csv"):
+                    os.remove("C:\\Users\\bob\\Documents\\TrainYourOwnYOLO\\Data\\Source_Images\\Test_Image_Detection_Results\\Detection_Results.csv")
+
+                start = timer()
+                text_out = ""
+
+                # This is for images
+                for i, img_path in enumerate(input_image_paths):
+                    print(img_path)
+                    prediction, image = detect_object(
+                        yolo,
+                        img_path,
+                        save_img=save_img,
+                        save_img_path=FLAGS.output,
+                        postfix=FLAGS.postfix,
+                    )
+                    y_size, x_size, _ = np.array(image).shape
+                    for single_prediction in prediction:
+                        out_df = out_df.append(
+                            pd.DataFrame(
+                                [
+                                    [
+                                        os.path.basename(img_path.rstrip("\n")),
+                                        img_path.rstrip("\n"),
+                                    ]
+                                    + single_prediction
+                                    + [x_size, y_size]
+                                ],
+                                columns=[
+                                    "image",
+                                    "image_path",
+                                    "xmin",
+                                    "ymin",
+                                    "xmax",
+                                    "ymax",
+                                    "label",
+                                    "confidence",
+                                    "x_size",
+                                    "y_size",
+                                ],
+                            )
+                        )
+                end = timer()
+
+                print(
+                    "Processed {} images in {:.1f}sec - {:.1f}FPS".format(
+                        len(input_image_paths),
+                        end - start,
+                        len(input_image_paths) / (end - start),
+                    )
+                )
+
+                out_df.to_csv(FLAGS.box, index=False)
+
+                if os.path.exists("C:\\Users\\bob\\Documents\\TrainYourOwnYOLO\\Data\\Source_Images\\Test_Images\\processme.png"):
+                    os.remove("C:\\Users\\bob\\Documents\\TrainYourOwnYOLO\\Data\\Source_Images\\Test_Images\\processme.png")
+                time.sleep(.3000)
+        except:
+            print("An exception occurred")
 
     # This is for videos
     if input_video_paths:

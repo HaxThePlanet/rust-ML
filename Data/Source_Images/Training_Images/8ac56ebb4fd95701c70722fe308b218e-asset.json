@@ -1,0 +1,48 @@
+{
+    "asset": {
+        "id": "8ac56ebb4fd95701c70722fe308b218e",
+        "format": "png",
+        "state": 2,
+        "type": 1,
+        "name": "tree2.png",
+        "path": "https://ruststorage.blob.core.windows.net/rustpictures/tree2.png?sv=2019-02-02&ss=b&srt=sco&sp=rwdlac&se=2020-04-26T03:01:20Z&st=2020-04-09T19:01:20Z&spr=https&sig=pEV2Co%2FnWpUnCE6aCXvAPHb%2FeW82DV%2FYywL48bzmbVU%3D",
+        "size": {
+            "width": 3840,
+            "height": 2160
+        }
+    },
+    "regions": [
+        {
+            "id": "dEMRwEAbA",
+            "type": "POLYGON",
+            "tags": [
+                "treeforest"
+            ],
+            "boundingBox": {
+                "height": 1350,
+                "width": 264.82758620689657,
+                "left": 1686.951724137931,
+                "top": 12.738970588235293
+            },
+            "points": [
+                {
+                    "x": 1904.1103448275862,
+                    "y": 1362.7389705882354
+                },
+                {
+                    "x": 1686.951724137931,
+                    "y": 1341.5625
+                },
+                {
+                    "x": 1792.8827586206896,
+                    "y": 12.738970588235293
+                },
+                {
+                    "x": 1951.7793103448275,
+                    "y": 15.386029411764705
+                }
+            ]
+        }
+    ],
+    "version": "2.1.0"
+}

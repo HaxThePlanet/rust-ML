@@ -1,1 +1,10 @@
-Cat_Face
+wooddoorfront
+woodwallback
+wooddoorback
+stonewallback
+stonewallfront
+metaldoor
+woodwallfront
+treeforest
+treedesert
+cactus
