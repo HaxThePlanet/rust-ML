@@ -1,2 +1,5 @@
 image,image_path,xmin,ymin,xmax,ymax,label,confidence,x_size,y_size
-processme.png,C:\Users\bob\Documents\TrainYourOwnYOLO\Data\Source_Images\Test_Images\processme.png,1448,1041,1834,1567,2,0.30306288599967957,3840,2160
+rec1.png,C:\Users\bob\Documents\TrainYourOwnYOLO\Data\Source_Images\Test_Images\rec1.png,1722,1070,1914,1348,5,0.16950349509716034,3840,1689
+rec1.png,C:\Users\bob\Documents\TrainYourOwnYOLO\Data\Source_Images\Test_Images\rec1.png,1341,960,2316,1425,4,0.10614225268363953,3840,1689
+rec1.png,C:\Users\bob\Documents\TrainYourOwnYOLO\Data\Source_Images\Test_Images\rec1.png,1722,1070,1914,1348,2,0.24852606654167175,3840,1689
+rec1.png,C:\Users\bob\Documents\TrainYourOwnYOLO\Data\Source_Images\Test_Images\rec1.png,1722,1070,1914,1348,0,0.103505440056324,3840,1689
