@@ -127,7 +127,7 @@ if __name__ == "__main__":
         "--confidence",
         type=float,
         dest="score",
-        default=0.25,
+        default=0.15,
         help="Threshold for YOLO object confidence score to show predictions. Default is 0.25.",
     )
 
@@ -144,7 +144,7 @@ if __name__ == "__main__":
         "--postfix",
         type=str,
         dest="postfix",
-        default="_catface",
+        default="_rust",
         help='Specify the postfix for images with bounding boxes. Default is "_catface"',
     )
 
@@ -209,7 +209,7 @@ if __name__ == "__main__":
                     "label",
                     "confidence",
                     "x_size",
-                    "y_size",
+                    "y_size"
                 ]
             )
 
@@ -235,8 +235,7 @@ if __name__ == "__main__":
             if input_image_paths:
                 print(
                     "Found {} input images: {} ...".format(
-                        len(input_image_paths),
-                        [os.path.basename(f) for f in input_image_paths[:5]],
+                        len(input_image_paths), [os.path.basename(f) for f in input_image_paths[:5]],
                     )
                 )
 
@@ -285,17 +284,14 @@ if __name__ == "__main__":
                 end = timer()
 
                 print(
-                    "Processed {} images in {:.1f}sec - {:.1f}FPS".format(
-                        len(input_image_paths),
-                        end - start,
-                        len(input_image_paths) / (end - start),
-                    )
+                    "Processed {} images in {:.1f}sec - {:.1f}FPS".format(len(input_image_paths),end - start,len(input_image_paths) / (end - start),)
                 )
 
                 out_df.to_csv(FLAGS.box, index=False)
 
                 if os.path.exists("C:\\Users\\bob\\Documents\\TrainYourOwnYOLO\\Data\\Source_Images\\Test_Images\\processme.png"):
                     os.remove("C:\\Users\\bob\\Documents\\TrainYourOwnYOLO\\Data\\Source_Images\\Test_Images\\processme.png")
+
                 time.sleep(.3000)
         except:
             print("An exception occurred")
