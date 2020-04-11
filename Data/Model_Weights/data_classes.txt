@@ -1,10 +1,6 @@
-wooddoorfront
-woodwallback
 wooddoorback
-stonewallback
-stonewallfront
+wooddoorfront
 metaldoor
-woodwallfront
 treeforest
 treedesert
 cactus
